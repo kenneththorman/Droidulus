@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Droidulus</string>
+    <string name="score">Score: </string>
+    <string name="initialScore">0/0</string>
+	<string name="menuoptions">Options</string>
+	<string name="menuabout">About</string>
+    <string name="operators_prompt">Choose an operator</string>
+    <string-array name="operators_array">
+        <item>+</item>
+        <item>*</item>
+        <item>-</item>
+    </string-array>
+</resources>

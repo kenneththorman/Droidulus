@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+    >
+	
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:layout_gravity="center_vertical"
+		android:padding="5px"
+		>
+	
+		<TextView
+		    android:layout_height="wrap_content"
+			android:layout_width="150sp"
+			android:text="Operator 1 min/max"
+			android:padding="10px"
+			/>
+		<EditText       
+			android:id="@+id/operator1min"
+			android:text="10"
+		    android:layout_height="wrap_content"
+			android:layout_width="50sp"
+			android:textSize="18sp"
+			android:layout_gravity="center_horizontal"
+			/>
+		<EditText       
+			android:id="@+id/operator1max"
+			android:text="10"
+		    android:layout_height="wrap_content"
+			android:layout_width="50sp"
+			android:textSize="18sp"
+			android:layout_gravity="center_horizontal"
+			/>
+	</LinearLayout>
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:layout_gravity="center_vertical"
+		android:padding="5px"
+		>
+	
+		<TextView
+		    android:layout_height="wrap_content"
+			android:layout_width="150sp"
+			android:text="Operator 2 min/max"
+			android:padding="10px"
+			/>
+		<EditText       
+			android:id="@+id/operator2min"
+		    android:layout_height="wrap_content"
+			android:text="10"
+			android:layout_width="50sp"
+			android:textSize="18sp"
+			android:layout_gravity="center_horizontal"
+			/>
+		<EditText       
+			android:id="@+id/operator2max"
+		    android:layout_height="wrap_content"
+			android:text="10"
+			android:layout_width="50sp"
+			android:textSize="18sp"
+			android:layout_gravity="center_horizontal"
+			/>
+	</LinearLayout>
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:layout_gravity="center_vertical"
+		android:padding="5px"
+		>
+	
+		<TextView
+		    android:layout_height="wrap_content"
+			android:layout_width="150sp"
+			android:text="Operator type"
+			android:padding="10px"
+			/>
+		<Spinner
+			android:id="@+id/operators"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:prompt="@string/operators_prompt"
+			/>
+	</LinearLayout>
+ 	<LinearLayout
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+		android:layout_gravity="center_horizontal"
+		android:orientation="horizontal">
+	
+		<Button
+		android:id="@+id/saveOptions"
+		android:layout_width="100px"
+		android:layout_height="wrap_content"
+		android:textSize="18sp"
+		android:text="Save Options"
+		>
+		</Button>
+	</LinearLayout> 
+</LinearLayout>
