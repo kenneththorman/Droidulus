@@ -19,8 +19,9 @@ public class AdditionProblemComposer extends ProblemComposer {
 	public void VisualizeProblem(TableLayout visualGrid, Button[] uiViewsToDisableDuringVisualization) {
 		enableViews(uiViewsToDisableDuringVisualization, false);
 		visualGrid.removeAllViews();
-		if (correctAnswer > 100){
-			Toast.makeText(visualGrid.getContext(), "Not showing more that 100 items.", Toast.LENGTH_SHORT).show();			
+		int rowsNeededToVisualize = occupiesVisualRows(operand1) + occupiesVisualRows(operand2);
+		if (rowsNeededToVisualize > 10){
+			Toast.makeText(visualGrid.getContext(), "Not enough room to visualize.", Toast.LENGTH_SHORT).show();			
 		}
 		else{
 			visualizeOperand(visualGrid, operand1, R.drawable.apple);
