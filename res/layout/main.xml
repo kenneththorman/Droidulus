@@ -84,7 +84,6 @@
 		android:background="@drawable/help"
 	/>
 
-
 	<TableLayout 
 		android:id="@+id/myTableLayout"
 		android:layout_gravity="center_horizontal"
