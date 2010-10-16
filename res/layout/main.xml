@@ -16,7 +16,7 @@
 	<LinearLayout
 		android:id="@+id/spacer"
 		android:layout_width="fill_parent"
-		android:layout_height="20px"
+		android:layout_height="10px"
 		android:orientation="horizontal">
 	</LinearLayout>
 
@@ -73,24 +73,24 @@
 		</Button>
 	</LinearLayout>
 
-	<Button
+	<ImageButton
 		android:id="@+id/helpButton"
-		android:layout_width="@dimen/answerButton_width"
+		android:scaleType="center"
+		android:src="@drawable/help"
+		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_x="250dip"
-		android:layout_y="150dip"
-		android:textSize="@dimen/font_size"
-		android:text="Help"
 		android:layout_gravity="center_horizontal"
-		android:layout_marginTop="20dip">
-	</Button>
+		android:layout_marginTop="12dip"
+		android:background="@drawable/help"
+	/>
+
 
 	<TableLayout 
 		android:id="@+id/myTableLayout"
 		android:layout_gravity="center_horizontal"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginTop="20dip">
+		android:layout_marginTop="10dip">
 	</TableLayout>
 </LinearLayout>
 

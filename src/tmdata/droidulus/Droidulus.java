@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,7 +32,7 @@ public class Droidulus extends Activity {
 	private TextView scoreView;
 	private TextView problemView;
 	private TableLayout visualGrid;
-	private Button helpButton;
+	private ImageButton helpButton;
 	private Button answer1Button;
 	private Button answer2Button;
 	private Button answer3Button;
@@ -159,7 +160,7 @@ public class Droidulus extends Activity {
     	    	showProblemHelp();
     	    }
     	};
-        helpButton = (Button) findViewById(R.id.helpButton);
+        helpButton = (ImageButton) findViewById(R.id.helpButton);
         helpButton.setOnClickListener(helpButtonListener);
 
         visualGrid = (TableLayout)findViewById(R.id.myTableLayout);
