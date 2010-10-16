@@ -46,8 +46,9 @@ public class SubtractionProblemComposer extends ProblemComposer {
 		enableViews(uiViewsToDisableDuringVisualization, false);
 		operand2Views.clear();
 		visualGrid.removeAllViews();
-		if ((operand1 + operand2) > 100){
-			Toast.makeText(visualGrid.getContext(), "Not showing more that 100 items.", Toast.LENGTH_SHORT).show();			
+		int rowsNeededToVisualize = occupiesVisualRows(operand1) + occupiesVisualRows(operand2);
+		if (rowsNeededToVisualize > 10){
+			Toast.makeText(visualGrid.getContext(), "Not enough room to visualize.", Toast.LENGTH_SHORT).show();			
 		}
 		else{
 	        int counter = 0;

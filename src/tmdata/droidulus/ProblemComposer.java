@@ -106,4 +106,8 @@ public abstract class ProblemComposer {
 		operand2 = temp;
 	}
 
+	protected int occupiesVisualRows(int number) {
+		return ((number - (number % 10)) / 10) + ((number % 10) > 0 ? 1 : 0);
+	}
+
 }

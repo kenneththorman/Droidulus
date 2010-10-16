@@ -19,7 +19,7 @@ public class MultiplicationProblemComposer extends ProblemComposer {
 	public void VisualizeProblem(TableLayout visualGrid, Button[] uiViewsToDisableDuringVisualization) {
 		enableViews(uiViewsToDisableDuringVisualization, false);
 		visualGrid.removeAllViews();
-		if (correctAnswer > 100){
+		if (operand1 > 10 || operand2 > 10){
 			Toast.makeText(visualGrid.getContext(), "Not showing more that 100 items.", Toast.LENGTH_SHORT).show();			
 		}
 		else{
