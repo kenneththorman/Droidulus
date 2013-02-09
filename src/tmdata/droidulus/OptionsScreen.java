@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -23,6 +24,7 @@ public class OptionsScreen extends Activity {
 	private EditText operator1max;
 	private EditText operator2min;
 	private EditText operator2max;
+	private CheckBox showPossibleAnswers;
 	private SharedPreferences sharedPreferences;
 	
     /** Called when the activity is first created. */
@@ -53,6 +55,9 @@ public class OptionsScreen extends Activity {
         // Operator 2 max value
         operator2max = (EditText) findViewById(R.id.operator2max);
         operator2max.setText(Integer.toString(sharedPreferences.getInt("operator2max", 10))); 
+
+        showPossibleAnswers = (CheckBox) findViewById(R.id.showPossibleAnswers);
+        showPossibleAnswers.setChecked(sharedPreferences.getBoolean("showPossibleAnswers", true)); 
         
         // Operator spinner / drop down
         operatorSpinner = (Spinner) findViewById(R.id.operators);
@@ -87,6 +92,7 @@ public class OptionsScreen extends Activity {
         editor.putInt("operator1max", Integer.parseInt(operator1max.getText().toString()));
         editor.putInt("operator2min", Integer.parseInt(operator2min.getText().toString()));
         editor.putInt("operator2max", Integer.parseInt(operator2max.getText().toString()));
+        editor.putBoolean("showPossibleAnswers", showPossibleAnswers.isChecked());
         editor.commit();
     }
 }

@@ -11,76 +11,76 @@
 	    android:layout_height="wrap_content"
 		android:orientation="horizontal"
 		android:layout_gravity="center_vertical"
-		android:padding="5px"
+		android:padding="3dp"
 		>
 	
 		<TextView
 		    android:layout_height="wrap_content"
 			android:layout_width="150sp"
-			android:text="Operator 1 min/max"
-			android:padding="10px"
+			android:text="@string/operator_1_min_max"
+			android:padding="6dp"
 			/>
 		<EditText       
 			android:id="@+id/operator1min"
-			android:text="10"
+			android:text="@string/_10"
 		    android:layout_height="wrap_content"
 			android:layout_width="50sp"
 			android:textSize="18sp"
 			android:layout_gravity="center_horizontal"
-			/>
+			android:inputType="numberSigned"/>
 		<EditText       
 			android:id="@+id/operator1max"
-			android:text="10"
+			android:text="@string/_10"
 		    android:layout_height="wrap_content"
 			android:layout_width="50sp"
 			android:textSize="18sp"
 			android:layout_gravity="center_horizontal"
-			/>
+			android:inputType="numberSigned"/>
 	</LinearLayout>
 	<LinearLayout
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 		android:orientation="horizontal"
 		android:layout_gravity="center_vertical"
-		android:padding="5px"
+		android:padding="3dp"
 		>
 	
 		<TextView
 		    android:layout_height="wrap_content"
 			android:layout_width="150sp"
-			android:text="Operator 2 min/max"
-			android:padding="10px"
+			android:text="@string/operator_2_min_max"
+			android:padding="6dp"
 			/>
 		<EditText       
 			android:id="@+id/operator2min"
 		    android:layout_height="wrap_content"
-			android:text="10"
+			android:text="@string/_10"
 			android:layout_width="50sp"
 			android:textSize="18sp"
 			android:layout_gravity="center_horizontal"
-			/>
+			android:inputType="numberSigned"/>
 		<EditText       
 			android:id="@+id/operator2max"
 		    android:layout_height="wrap_content"
-			android:text="10"
+			android:text="@string/_10"
 			android:layout_width="50sp"
 			android:textSize="18sp"
 			android:layout_gravity="center_horizontal"
-			/>
+			android:inputType="numberSigned"/>
 	</LinearLayout>
 	<LinearLayout
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 		android:orientation="horizontal"
 		android:layout_gravity="center_vertical"
-		android:padding="5px"
+		android:padding="3dp"
 		>
 	
 		<TextView
 		    android:layout_height="wrap_content"
 			android:layout_width="150sp"
-			android:text="Operator type"
-			android:padding="10px"
+			android:text="@string/operator_type"
+			android:padding="6dp"
 			/>
 		<Spinner
 			android:id="@+id/operators"
@@ -89,6 +89,14 @@
 			android:prompt="@string/operators_prompt"
 			/>
 	</LinearLayout>
+
+	<CheckBox
+	    android:id="@+id/showPossibleAnswers"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:checked="true"
+	    android:text="@string/show_possible_answers" />
+
  	<LinearLayout
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
@@ -97,10 +105,10 @@
 	
 		<Button
 		android:id="@+id/saveOptions"
-		android:layout_width="100px"
+		android:layout_width="66dp"
 		android:layout_height="wrap_content"
 		android:textSize="18sp"
-		android:text="Save Options"
+		android:text="@string/save_options"
 		>
 		</Button>
 	</LinearLayout> 

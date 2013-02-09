@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:id="@+id/main"
+<LinearLayout android:id="@+id/main"
 	android:orientation="vertical"
 	android:layout_width="fill_parent"
-	android:layout_height="wrap_content">
+	android:layout_height="wrap_content" xmlns:android="http://schemas.android.com/apk/res/android">
 
 	<TextView
 		android:id="@+id/scoreView"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:text="TextView"
+		android:text=""
 		android:textSize="@dimen/point_font_size">
 	</TextView>
 
 	<LinearLayout
 		android:id="@+id/spacer"
 		android:layout_width="fill_parent"
-		android:layout_height="10px"
+		android:layout_height="10dp"
 		android:orientation="horizontal">
 	</LinearLayout>
 
@@ -31,10 +30,8 @@
 			android:id="@+id/problemView"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="TextView"
-			android:textSize="@dimen/font_size"
-			android:layout_x="20dip"
-			android:layout_y="20dip">
+			android:text=""
+			android:textSize="@dimen/font_size">
 		</TextView>
 	</LinearLayout>
 
@@ -49,8 +46,6 @@
 			android:id="@+id/answer1"
 			android:layout_width="@dimen/answerButton_width"
 			android:layout_height="wrap_content"
-			android:layout_x="50dip"
-			android:layout_y="150dip"
 			android:textSize="@dimen/font_size">
 		</Button>
 
@@ -58,8 +53,6 @@
 			android:id="@+id/answer2"
 			android:layout_width="@dimen/answerButton_width"
 			android:layout_height="wrap_content"
-			android:layout_x="150dip"
-			android:layout_y="150dip"
 			android:textSize="@dimen/font_size">
 		</Button>
 
@@ -67,12 +60,152 @@
 			android:id="@+id/answer3"
 			android:layout_width="@dimen/answerButton_width"
 			android:layout_height="wrap_content"
-			android:layout_x="250dip"
-			android:layout_y="150dip"
 			android:textSize="@dimen/font_size">
 		</Button>
 	</LinearLayout>
 
+	<LinearLayout
+		android:id="@+id/row3"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center_horizontal"
+		android:orientation="horizontal">
+
+		<EditText
+		    android:id="@+id/textAnswer"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_weight="1"
+		    android:inputType="number"
+		    android:maxLines="1"
+		    android:width="@dimen/answerButton_width" >
+
+		    <requestFocus />
+		</EditText>
+
+		<Button
+		    android:id="@+id/textAnswerButton"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_weight="1"
+		    android:text="Button" />
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:id="@+id/keyrow1"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center_horizontal"
+		android:orientation="horizontal">
+
+		<Button
+		    android:id="@+id/key1"
+		    android:layout_width="@dimen/answerButton_width"
+		    android:layout_height="wrap_content"
+		    android:text="1"
+		    android:textSize="@dimen/font_size" >
+
+		</Button>
+
+		<Button
+		    android:id="@+id/key2"
+		    android:layout_width="@dimen/answerButton_width"
+		    android:layout_height="wrap_content"
+		    android:text="2"
+		    android:textSize="@dimen/font_size" >
+
+		</Button>
+
+		<Button
+		    android:id="@+id/key3"
+		    android:layout_width="@dimen/answerButton_width"
+		    android:layout_height="wrap_content"
+		    android:text="3"
+		    android:textSize="@dimen/font_size" >
+
+		</Button>
+	</LinearLayout>
+	<LinearLayout
+		android:id="@+id/keyrow2"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center_horizontal"
+		android:orientation="horizontal">
+
+		<Button
+			android:id="@+id/key4"
+			android:layout_width="@dimen/answerButton_width"
+			android:layout_height="wrap_content"
+		    android:text="4"
+			android:textSize="@dimen/font_size">
+		</Button>
+
+		<Button
+			android:id="@+id/key5"
+			android:layout_width="@dimen/answerButton_width"
+			android:layout_height="wrap_content"
+		    android:text="5"
+			android:textSize="@dimen/font_size">
+		</Button>
+
+		<Button
+			android:id="@+id/key6"
+			android:layout_width="@dimen/answerButton_width"
+			android:layout_height="wrap_content"
+		    android:text="6"
+			android:textSize="@dimen/font_size">
+		</Button>
+	</LinearLayout>
+	<LinearLayout
+		android:id="@+id/keyrow3"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center_horizontal"
+		android:orientation="horizontal">
+
+		<Button
+			android:id="@+id/key7"
+			android:layout_width="@dimen/answerButton_width"
+			android:layout_height="wrap_content"
+		    android:text="7"
+			android:textSize="@dimen/font_size">
+		</Button>
+
+		<Button
+			android:id="@+id/key8"
+			android:layout_width="@dimen/answerButton_width"
+			android:layout_height="wrap_content"
+		    android:text="8"
+			android:textSize="@dimen/font_size">
+		</Button>
+
+		<Button
+			android:id="@+id/key9"
+			android:layout_width="@dimen/answerButton_width"
+			android:layout_height="wrap_content"
+		    android:text="9"
+			android:textSize="@dimen/font_size">
+		</Button>
+	</LinearLayout>
+
+	<LinearLayout
+		android:id="@+id/keyrow4"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center_horizontal"
+		android:orientation="horizontal">
+
+		<Button
+			android:id="@+id/key0"
+			android:layout_width="@dimen/answerButton_width"
+			android:layout_height="wrap_content"
+		    android:text="0"
+			android:textSize="@dimen/font_size">
+		</Button>
+
+	</LinearLayout>
+						
 	<ImageButton
 		android:id="@+id/helpButton"
 		android:scaleType="center"
@@ -82,6 +215,7 @@
 		android:layout_gravity="center_horizontal"
 		android:layout_marginTop="12dip"
 		android:background="@drawable/help"
+		android:contentDescription="@string/help_button"
 	/>
 
 	<TableLayout 

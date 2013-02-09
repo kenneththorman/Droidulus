@@ -11,4 +11,11 @@
         <item>*</item>
         <item>-</item>
     </string-array>
+        <string name="help_button">Help button</string>
+        <string name="show_possible_answers">Show possible answers</string>
+        <string name="operator_type">Operator type</string>
+        <string name="_10">10</string>
+        <string name="operator_2_min_max">Operator 2 min/max</string>
+        <string name="save_options">Save Options</string>
+        <string name="operator_1_min_max">Operator 1 min/max</string>
 </resources>

@@ -6,7 +6,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.opengl.Visibility;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
@@ -14,8 +13,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,19 +34,35 @@ public class Droidulus extends Activity {
 	private TextView problemView;
 	private TableLayout visualGrid;
 	private ImageButton helpButton;
+	private LinearLayout answerButtonsRow;
+	private LinearLayout answerTextRow;
+	private Button textAnswerButton;
+	private TextView textAnswer;
 	private Button answer1Button;
 	private Button answer2Button;
 	private Button answer3Button;
+	private LinearLayout keyRow1;
+	private LinearLayout keyRow2;
+	private LinearLayout keyRow3;
+	private LinearLayout keyRow4;
+	private Button key1Button;
+	private Button key2Button;
+	private Button key3Button;
+	private Button key4Button;
+	private Button key5Button;
+	private Button key6Button;
+	private Button key7Button;
+	private Button key8Button;
+	private Button key9Button;
+	private Button key0Button;
 	private OnClickListener helpButtonListener; 
-	private OnClickListener answerButton1Listener; 
-	private OnClickListener answerButton2Listener; 
-	private OnClickListener answerButton3Listener; 
+	private OnClickListener textAnswerButtonListener; 
+	private OnClickListener answerButtonListener; 
+	private OnClickListener keyButtonListener; 
 	private Button[] answerButtons;
 
 	private SharedPreferences sharedPreferences;
 	private Options options;
-	
-    private Menu menu;
 	
     /** Called when the activity is first created. */
     @Override
@@ -57,7 +74,7 @@ public class Droidulus extends Activity {
         scoreView = (TextView)findViewById(R.id.scoreView);
         scoreView.setText(String.format("%s %s",getString(R.string.score), getString(R.string.initialScore)));
         scoreView.setTextColor(Color.GREEN);
-        
+
         initilize();
         presentProblem();
     }
@@ -65,7 +82,6 @@ public class Droidulus extends Activity {
     /** Called when clicking the menu button. */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        this.menu = menu;
         
         // Inflate the currently selected menu XML resource.
         MenuInflater inflater = getMenuInflater();
@@ -110,6 +126,7 @@ public class Droidulus extends Activity {
     private void getSavedSettings()
     {
     	sharedPreferences = getSharedPreferences(PREFS_NAME, 0);
+    	options.ShowPossibleAnswers = sharedPreferences.getBoolean("showPossibleAnswers", true);
     	options.Operator = sharedPreferences.getString("operator", "+");
         options.Operator1 =  new OperandRange(sharedPreferences.getInt("operator1min", 0), sharedPreferences.getInt("operator1max", 10));
         options.Operator2 =  new OperandRange(sharedPreferences.getInt("operator2min", 0), sharedPreferences.getInt("operator2max", 10));
@@ -124,35 +141,72 @@ public class Droidulus extends Activity {
     	problemComposer = ProblemComposerFactory.Create(options);
         
         problemView = (TextView)findViewById(R.id.problemView);
-        
-        // AnswerButtonListener1
-        answerButton1Listener = new OnClickListener() {
-    	    public void onClick(View v) {
-    	      verifyUserAnswer(v);
-    	    }
-    	};
+        answerButtonsRow = (LinearLayout)findViewById(R.id.row2);
+        answerTextRow = (LinearLayout)findViewById(R.id.row3);
+        textAnswer = (TextView)findViewById(R.id.textAnswer);
+        textAnswerButton = (Button)findViewById(R.id.textAnswerButton);
         answer1Button = (Button)findViewById(R.id.answer1);
-        answer1Button.setOnClickListener(answerButton1Listener);
-
-        // AnswerButtonListener2
-        answerButton2Listener = new OnClickListener() {
-    	    public void onClick(View v) {
-    	      verifyUserAnswer(v);
-    	    }
-    	};
         answer2Button = (Button)findViewById(R.id.answer2);
-        answer2Button.setOnClickListener(answerButton2Listener);
+        answer3Button = (Button)findViewById(R.id.answer3);
+        helpButton = (ImageButton) findViewById(R.id.helpButton);
+        visualGrid = (TableLayout)findViewById(R.id.myTableLayout);
+        key1Button = (Button)findViewById(R.id.key1);
+        key2Button = (Button)findViewById(R.id.key2);
+        key3Button = (Button)findViewById(R.id.key3);
+        key4Button = (Button)findViewById(R.id.key4);
+        key5Button = (Button)findViewById(R.id.key5);
+        key6Button = (Button)findViewById(R.id.key6);
+        key7Button = (Button)findViewById(R.id.key7);
+        key8Button = (Button)findViewById(R.id.key8);
+        key9Button = (Button)findViewById(R.id.key9);
+        key0Button = (Button)findViewById(R.id.key0);
+        keyRow1 = (LinearLayout)findViewById(R.id.keyrow1);
+        keyRow2 = (LinearLayout)findViewById(R.id.keyrow2);
+        keyRow3 = (LinearLayout)findViewById(R.id.keyrow3);
+        keyRow4 = (LinearLayout)findViewById(R.id.keyrow4);
 
-        // AnswerButton3Listener
-        answerButton3Listener = new OnClickListener() {
+        
+        this.configureUiSetup();
+
+        textAnswerButtonListener = new OnClickListener() {
+    	    public void onClick(View v) {
+    	        v.setTag(textAnswer.getText());
+    	    	verifyUserAnswer(v);
+    	    }
+    	};
+        textAnswerButton.setOnClickListener(textAnswerButtonListener);
+
+        
+        // AnswerButtonListener
+        answerButtonListener = new OnClickListener() {
     	    public void onClick(View v) {
     	      verifyUserAnswer(v);
     	    }
     	};
-        answer3Button = (Button)findViewById(R.id.answer3);
-        answer3Button.setOnClickListener(answerButton3Listener);
+        answer1Button.setOnClickListener(answerButtonListener);
+        answer2Button.setOnClickListener(answerButtonListener);
+        answer3Button.setOnClickListener(answerButtonListener);
         
-        answerButtons = new Button[] {answer1Button, answer2Button, answer3Button};
+        // KeyButtonListener
+        keyButtonListener = new OnClickListener() {
+    	    public void onClick(View v) {
+    	      Button button = (Button) v;
+    	      textAnswer.setText(textAnswer.getText().toString()+button.getText().toString());
+    	    }
+    	};
+        
+        key1Button.setOnClickListener(keyButtonListener);
+        key2Button.setOnClickListener(keyButtonListener);
+        key3Button.setOnClickListener(keyButtonListener);
+        key4Button.setOnClickListener(keyButtonListener);
+        key5Button.setOnClickListener(keyButtonListener);
+        key6Button.setOnClickListener(keyButtonListener);
+        key7Button.setOnClickListener(keyButtonListener);
+        key8Button.setOnClickListener(keyButtonListener);
+        key9Button.setOnClickListener(keyButtonListener);
+        key0Button.setOnClickListener(keyButtonListener);
+
+    	answerButtons = new Button[] {answer1Button, answer2Button, answer3Button};
         
         // AnswerButton3Listener
         helpButtonListener = new OnClickListener() {
@@ -160,27 +214,55 @@ public class Droidulus extends Activity {
     	    	showProblemHelp();
     	    }
     	};
-        helpButton = (ImageButton) findViewById(R.id.helpButton);
         helpButton.setOnClickListener(helpButtonListener);
-
-        visualGrid = (TableLayout)findViewById(R.id.myTableLayout);
 	}
     
+    private void configureUiSetup()
+    {
+		if (this.options.ShowPossibleAnswers) {
+			answerButtonsRow.setVisibility(View.VISIBLE);
+			answerTextRow.setVisibility(View.GONE);
+			keyRow1.setVisibility(View.GONE);
+			keyRow2.setVisibility(View.GONE);
+			keyRow3.setVisibility(View.GONE);
+			keyRow4.setVisibility(View.GONE);
+		}
+		else {
+			answerButtonsRow.setVisibility(View.GONE);
+			answerTextRow.setVisibility(View.VISIBLE);
+			keyRow1.setVisibility(View.VISIBLE);
+			keyRow2.setVisibility(View.VISIBLE);
+			keyRow3.setVisibility(View.VISIBLE);
+			keyRow4.setVisibility(View.VISIBLE);
+		}
+    	
+    }
     private void presentProblem()
     {
         problemComposer.GenerateProblem();
 		problemView.setText(problemComposer.GetProblemText(false));
-		problemComposer.GenerateAnswerPossibilities(answerButtons);
-		visualGrid.setVisibility(View.GONE);
-		helpButton.setVisibility(View.VISIBLE);
+		if (this.options.ShowPossibleAnswers) {
+			problemComposer.GenerateAnswerPossibilities(answerButtons);
+			visualGrid.setVisibility(View.GONE);
+			helpButton.setVisibility(View.VISIBLE);
+			answerButtonsRow.setVisibility(View.VISIBLE);
+			answerTextRow.setVisibility(View.GONE);
+		}
+		else {
+			textAnswer.setText("");
+			helpButton.setVisibility(View.GONE);
+			answerButtonsRow.setVisibility(View.GONE);
+			answerTextRow.setVisibility(View.VISIBLE);
+		}
     }
     
     private void showProblemHelp()
     {
-    	helpButton.setVisibility(View.GONE);
-    	visualGrid.setVisibility(View.VISIBLE);
-    	problemComposer.VisualizeProblem(visualGrid, answerButtons);
-    	
+		if (this.options.ShowPossibleAnswers) {
+	    	helpButton.setVisibility(View.GONE);
+	    	visualGrid.setVisibility(View.VISIBLE);
+	    	problemComposer.VisualizeProblem(visualGrid, answerButtons);
+		}
     }
 	private void verifyUserAnswer(final View view){
 		answerAttempts++;
